@@ -1,24 +1,8 @@
-# README
+Look, I play DND, ok? I made fun of kids in high school for it and I recognize I was in the wrong because it's A LOT of fun. There's at least 3 ways I know of doing this that already exist, but I'd like to figure out how to tailor a thing to do SPECIFICALLY the things I want and not just bastardize something that already exists (onenote and/or some google app).
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+That said, this project uses the following thingies:
+-Foundation (instead of bootstrap - a friend of mine says only douchebags use bootstrap; side note, bootstrap was MUCH easier to incorporate than foundation, but I attribute that to not knowing much about anything)
+-action_text - specifically rich text. I want to bold notes. Plus, I like headaches, so... Note: I have no clue is this will cause me headaches, but another system I worked on had a rich text-esque implementation that most certainly caused headaches. Not only with the display, but also with searching those fields because it included mark-up that essentially rendered it unu...  You know what, clearly I'm bitter about this, so we'll move on.
+-devise - user logins. I don't know if there's a better way to manage this, but I spent a month coding a user login from scratch and I'm super pumped to only spend an hour or so doing it with this gem.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+30JAN2022 - You can do stuff, but the models aren't linked. Still lots to do, but the superbowl is set and I'm going to sleep. Moar tomorrow.
