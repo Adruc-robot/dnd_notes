@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Useful links</h1>
+
+<div id="useful_links">
+  <% @useful_links.each do |useful_link| %>
+    <%= render useful_link %>
+    <p>
+      <%= link_to "Show this useful link", useful_link %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New useful link", new_useful_link_path %>
