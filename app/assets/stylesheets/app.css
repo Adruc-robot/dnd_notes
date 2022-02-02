@@ -28,3 +28,6 @@ trix-toolbar .trix-button {
 .base-submit-button {
     margin-top: 0.5vh
 }
+body {
+    background-color: #ebebeb;
+}
