@@ -1,37 +1,40 @@
-<%= form_with(model: useful_link) do |form| %>
-  <% if useful_link.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(useful_link.errors.count, "error") %> prohibited this useful_link from being saved:</h2>
+<div class="translucent-form-overlay">
+  <%= form_with(model: useful_link) do |form| %>
+    <% if useful_link.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(useful_link.errors.count, "error") %> prohibited this useful_link from being saved:</h2>
 
-      <ul>
-        <% useful_link.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% useful_link.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div>
+      <%= form.number_field :user_id, id: :note_user_id, value: current_user.id, type: :hidden %>
+    </div>
+
+    <div class="row columns">
+      <%= form.label :campaign_id, style: "display: block" do %>
+        <%= form.select :campaign_id, current_user.campaigns.map { |c| [c.name, c.id] }%>
+      <% end %>
+    </div>
+
+    <div class="row columns">
+      <%= form.label :name, style: "display: block" do %>
+        <%= form.text_field :name, placeholder:"link name" %>
+      <% end %>
+    </div>
+
+    <div class="row columns">
+      <%= form.label :url, style: "display: block" do %>
+        <%= form.text_field :url, placeholder: "input full link" %>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form.submit class:"base-submit-button primary button expanded search-button" %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.label :campaign_id, style: "display: block" %>
-    <%= form.number_field :campaign_id %>
-  </div>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_area :name %>
-  </div>
-
-  <div>
-    <%= form.label :url, style: "display: block" %>
-    <%= form.text_field :url %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

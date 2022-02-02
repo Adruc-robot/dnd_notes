@@ -1,9 +1,11 @@
 class CampaignsController < ApplicationController
   before_action :set_campaign, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy]
   # GET /campaigns or /campaigns.json
   def index
-    @campaigns = Campaign.all
+    #@campaigns = Campaign.all
+    @campaigns = current_user.campaigns.all.order(name: :asc)
   end
 
   # GET /campaigns/1 or /campaigns/1.json
@@ -12,7 +14,8 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/new
   def new
-    @campaign = Campaign.new
+    #@campaign = Campaign.new
+    @campaign = current_user.campaigns.build
   end
 
   # GET /campaigns/1/edit
@@ -21,7 +24,8 @@ class CampaignsController < ApplicationController
 
   # POST /campaigns or /campaigns.json
   def create
-    @campaign = Campaign.new(campaign_params)
+    #@campaign = Campaign.new(campaign_params)
+    @campaign = current_user.campaigns.build(campaign_params)
 
     respond_to do |format|
       if @campaign.save
@@ -56,6 +60,12 @@ class CampaignsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def correct_user  
+    @campaign = current_user.campaigns.find_by(id: params[:id])
+    redirect_to campaigns_path, notice: "Not authorized!" if @campaign.nil?
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

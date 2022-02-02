@@ -1,31 +1,29 @@
-<nav class="top-bar topbar-responsive">
-  <div class="top-bar-title">
-    <span data-responsive-toggle="topbar-responsive" data-hide-for="medium">
-      <button class="menu-icon" type="button" data-toggle></button>
-    </span>
-    <a class="topbar-responsive-logo" href="#"><strong>DND Notes</strong></a>
-  </div>
-  <div id="topbar-responsive" class="topbar-responsive-links">
-    <div class="top-bar-right">
-      <ul class="menu simple vertical medium-horizontal">
-        <li><%= link_to "Home", home_index_path %></li>
-        <% if user_signed_in? %>
-            <!--<li><%#= link_to "Sign Out", destroy_user_session_path, data: {turbo-method: :delete } %>-->
+<%= javascript_include_tag "custom/btn_test2"%>
+<div>
+  <nav class="top-bar topbar-responsive">
+    <div class="top-bar-title">
+      <span data-responsive-toggle="topbar-responsive" data-hide-for="medium">
+        <button id="flipFlop" class="menu-icon" type="button" onclick="doot()" data-toggle></button>
+      </span>
+      <%= link_to home_index_path,class:"topbar-responsive-logo" do %>
+        <strong>DND Notes</strong>
+      <% end %>
+    </div>
+    <div id="topbar-responsive" class="topbar-responsive-links">
+      <div class="top-bar-right">
+        <ul class="menu simple vertical medium-horizontal">
+          <% if user_signed_in? %>
             <li><%= link_to "Sign Out", destroy_user_session_path, data: {turbo_method: :delete} %>
-            <li><%= button_to "Sign Out", destroy_user_session_path, method: :delete %></li>
             <li><%= link_to current_user.user_name + " (Edit profile)", edit_user_registration_path %></li>
             <li><%= link_to "Campaigns", campaigns_path %></li>
             <li><%= link_to "Notes", notes_path %></li>
             <li><%= link_to "Links", useful_links_path%></li>
-        <% else %>
+          <% else %>
             <li><%= link_to "Sign In", new_user_session_path %></li>
             <li><%= link_to "Sign Up", new_user_registration_path %></li>
-        <% end %>
-        <li>
-          <button type="button" class="button hollow topbar-responsive-button">Categories</button>
-        </li>
-      </ul>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
-
+  </nav>
+</div>

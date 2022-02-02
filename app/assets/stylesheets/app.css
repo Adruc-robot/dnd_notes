@@ -1,0 +1,30 @@
+.genFlex {
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: stretch;
+    flex-direction: column;
+}
+.mainCont {
+    width: 90vw;
+    margin: 0 auto;
+}
+.translucent-form-overlay {
+    max-width: 90vw;
+}
+trix-toolbar .trix-button-row {
+    flex-wrap: wrap;
+}
+.trix-dialogs {
+    background-color: white;
+}
+
+trix-toolbar .trix-button {
+    background: white;
+}
+.trix-content {
+    background: white;
+}
+.base-submit-button {
+    margin-top: 0.5vh
+}

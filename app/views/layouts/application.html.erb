@@ -3,17 +3,26 @@
   <head>
     <title>DndStuff</title>
     <%= favicon_link_tag asset_path("favicon-32x32.png") %>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>-->
     <%= javascript_importmap_tags %>
+    
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>-->
+    <%= yield :head %>
+    
   </head>
 
   <body>
+  
   <%= render "home/menubar" %>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="mainCont">
+      <%= yield %>
+    <div>
   </body>
 </html>

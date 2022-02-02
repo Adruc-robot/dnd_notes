@@ -1,12 +1,6 @@
-<div id="<%= dom_id campaign %>">
-  <p>
-    <strong>User:</strong>
-    <%= campaign.user_id %>
-  </p>
-
-  <p>
-    <strong>Name:</strong>
-    <%= campaign.name %>
-  </p>
-
+<div id="<%= dom_id campaign %>" class="blockquote-container">
+    <div class="callout">
+      <h4 class="blockquote-title"><%= link_to campaign.name, campaign %></h4>
+    </div>
 </div>
+

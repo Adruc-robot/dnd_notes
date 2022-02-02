@@ -1,22 +1,6 @@
-<div id="<%= dom_id useful_link %>">
-  <p>
-    <strong>User:</strong>
-    <%= useful_link.user_id %>
-  </p>
-
-  <p>
-    <strong>Campaign:</strong>
-    <%= useful_link.campaign_id %>
-  </p>
-
-  <p>
-    <strong>Name:</strong>
-    <%= useful_link.name %>
-  </p>
-
-  <p>
-    <strong>Url:</strong>
-    <%= useful_link.url %>
-  </p>
-
+<div id="<%= dom_id useful_link %>" class="blockquote-container">
+  <div class="callout">
+    <h4 class="blockquote-title"><%= link_to useful_link.campaign.name, useful_link  %></h4>
+    <a href="<%= useful_link.url%>" target="_blank"><%= useful_link.name %></a>
+  </div>
 </div>

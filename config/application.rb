@@ -18,5 +18,8 @@ module DndStuff
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    #from https://stackoverflow.com/questions/70401077/rails-7-asset-pipeline-sasscsyntaxerror-with-tailwind/70665740#70665740
+    config.assets.css_compressor = nil
   end
 end

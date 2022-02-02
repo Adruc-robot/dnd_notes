@@ -1,9 +1,11 @@
 class NotesController < ApplicationController
   before_action :set_note, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy]
   # GET /notes or /notes.json
   def index
-    @notes = Note.all
+    #@notes = Note.all
+    @notes = current_user.notes.all
   end
 
   # GET /notes/1 or /notes/1.json
@@ -12,7 +14,8 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
-    @note = Note.new
+    #@note = Note.new
+    @note = current_user.notes.build
   end
 
   # GET /notes/1/edit
@@ -21,7 +24,8 @@ class NotesController < ApplicationController
 
   # POST /notes or /notes.json
   def create
-    @note = Note.new(note_params)
+    #@note = Note.new(note_params)
+    @note = current_user.notes.build(note_params)
 
     respond_to do |format|
       if @note.save
@@ -57,6 +61,10 @@ class NotesController < ApplicationController
     end
   end
 
+  def correct_user
+    @note = current_user.notes.find_by(id: params[:id])
+    redirect_to notes_path, notice: "Not authorized!" if @note.nil?
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_note
@@ -65,6 +73,7 @@ class NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:user_id, :campaign_id, :note_text)
+      params.require(:note).permit(:user_id, :campaign_id, :note_text, :content)
+      #params.require(:note).permit(:user_id, :campaign_id, :content)
     end
 end

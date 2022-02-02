@@ -3,7 +3,7 @@
     background: #2c3840;
     padding: 1rem 1.5rem;
   }
-  
+    
   .topbar-responsive .topbar-responsive-logo {
     color: #fefefe;
     vertical-align: middle;
@@ -74,7 +74,18 @@
       margin-bottom: 4px;
     }
   }
+  #flipFlop {
+    display: none;
+  }
   
+  @media screen and (max-width: 39.9375em) {
+    #flipFlop {
+      display: inline-block;
+    }
+    #topbar-responsive {
+      display: none;
+    }
+  }
   @-webkit-keyframes fadeIn {
     from {
       opacity: 0;

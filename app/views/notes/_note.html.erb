@@ -1,17 +1,9 @@
-<div id="<%= dom_id note %>">
-  <p>
-    <strong>User:</strong>
-    <%= note.user_id %>
-  </p>
-
-  <p>
-    <strong>Campaign:</strong>
-    <%= note.campaign_id %>
-  </p>
-
-  <p>
-    <strong>Note text:</strong>
-    <%= note.note_text %>
-  </p>
+<div id="<%= dom_id note %>" class="blockquote-container">
+  <div class="callout">
+    <h4 class="blockquote-title"><%= link_to note.campaign.name, note  %></h4>
+    <blockquote>
+      <p class="blockquote-content"><%= note.content %></p>
+    </blockquote>
+  </div>
 
 </div>

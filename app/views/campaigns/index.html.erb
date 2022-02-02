@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Campaigns</h1>
-
-<div id="campaigns">
+<%= link_to "New campaign", new_campaign_path %>
+<div id="campaigns" class="genFlex">
   <% @campaigns.each do |campaign| %>
     <%= render campaign %>
-    <p>
-      <%= link_to "Show this campaign", campaign %>
-    </p>
+    <!--<p>
+      <%#= link_to "Show this campaign", campaign %>
+    </p>-->
   <% end %>
 </div>
 
-<%= link_to "New campaign", new_campaign_path %>
+

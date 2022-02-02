@@ -50,8 +50,8 @@ gem "image_processing", "~> 1.2"
 #--------------------------My additions
 #devise
 gem 'devise', '~> 4.8', '>= 4.8.1'
-gem 'foundation-rails'
-gem 'actiontext', '~> 7.0', '>= 7.0.1'
+#gem 'foundation-rails'
+#gem 'actiontext', '~> 7.0', '>= 7.0.1'
 #--------------------------End my additions
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
