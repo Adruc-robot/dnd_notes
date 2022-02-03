@@ -10,6 +10,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/1 or /campaigns/1.json
   def show
+    @campaign = Campaign.find(params[:id])
   end
 
   # GET /campaigns/new

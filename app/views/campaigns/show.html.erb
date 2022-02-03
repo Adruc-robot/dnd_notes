@@ -2,6 +2,7 @@
 
 <%= render @campaign %>
 
+<%= render @campaign.notes %>
 <div>
   <%= link_to "Edit this campaign", edit_campaign_path(@campaign) %> |
   <%= link_to "Back to campaigns", campaigns_path %>

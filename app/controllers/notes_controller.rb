@@ -25,6 +25,7 @@ class NotesController < ApplicationController
   # POST /notes or /notes.json
   def create
     #@note = Note.new(note_params)
+    @campaign = Campaign.find(params[:campaign_id])
     @note = current_user.notes.build(note_params)
 
     respond_to do |format|
@@ -53,12 +54,15 @@ class NotesController < ApplicationController
 
   # DELETE /notes/1 or /notes/1.json
   def destroy
+    #hopefully allows us to destory a note from a campaign show page
+    @campaign = Campaign.find(params[:campaign_id])
+    @note = @campaign.notes.find(params[:id])
     @note.destroy
-
-    respond_to do |format|
-      format.html { redirect_to notes_url, notice: "Note was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to capaign_path(@campaign), status: 303
+    #respond_to do |format|
+      #format.html { redirect_to notes_url, notice: "Note was successfully destroyed." }
+      #format.json { head :no_content }
+    #end
   end
 
   def correct_user

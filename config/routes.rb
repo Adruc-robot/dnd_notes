@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   #for whatever reason, redirection to the root doesn't work when signing up, so I have to make a new controller etc.
   devise_for :users, controllers: { registrations: "registrations" }
   resources :useful_links
-  resources :campaigns
-  resources :notes
+  resources :campaigns do
+    resources :notes
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

@@ -1,6 +1,7 @@
 <div id="<%= dom_id note %>" class="blockquote-container">
   <div class="callout">
-    <h4 class="blockquote-title"><%= link_to note.campaign.name, note  %></h4>
+    <!--<h4 class="blockquote-title"><%#= link_to note.campaign.name, note_path  %></h4>-->
+    <h4 class="blockquote-title"><%= note.campaign.name %>
     <blockquote>
       <p class="blockquote-content"><%= note.content %></p>
     </blockquote>

@@ -16,7 +16,7 @@
             <li><%= link_to "Sign Out", destroy_user_session_path, data: {turbo_method: :delete} %>
             <li><%= link_to current_user.user_name + " (Edit profile)", edit_user_registration_path %></li>
             <li><%= link_to "Campaigns", campaigns_path %></li>
-            <li><%= link_to "Notes", notes_path %></li>
+            <!--<li><%#= link_to "Notes", notes_path %></li>-->
             <li><%= link_to "Links", useful_links_path%></li>
           <% else %>
             <li><%= link_to "Sign In", new_user_session_path %></li>
