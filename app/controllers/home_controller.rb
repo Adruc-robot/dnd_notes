@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @campaigns = current_user.campaigns.all
+    if user_signed_in?
+      @campaigns = current_user.campaigns.all
+    end
   end
 end

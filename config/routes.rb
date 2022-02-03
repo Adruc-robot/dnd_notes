@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  root to: "home#index"
   get 'home/index'
-  devise_for :users
+  #devise_for :users
+  #for whatever reason, redirection to the root doesn't work when signing up, so I have to make a new controller etc.
+  devise_for :users, controllers: { registrations: "registrations" }
   resources :useful_links
   resources :campaigns
   resources :notes
@@ -8,5 +11,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root to: "home#index"
+  
 end

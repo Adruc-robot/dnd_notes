@@ -2,6 +2,8 @@
   <div class="links"></div>
   <div class="notes"></div>
   <div class="utility">
-    <%= select_tag(:campaign_id, options_for_select(current_user.campaigns.map { |c| [c.name,c.id] } ) )%>
+    <% if user_signed_in? %>
+      <%= select_tag(:campaign_id, options_for_select(current_user.campaigns.map { |c| [c.name,c.id] } ) )%>
+    <% end %>
   </div>
 </div>
