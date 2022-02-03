@@ -1,4 +1,7 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<div data-controller="hello"></div>
-<div data-controller="btn_test"><%= link_to "this seems like a lot", "#", "data-action": "btn_test#convert"%></div>
+<div class="container">
+  <div class="links"></div>
+  <div class="notes"></div>
+  <div class="utility">
+    <%= select_tag(:campaign_id, options_for_select(current_user.campaigns.map { |c| [c.name,c.id] } ) )%>
+  </div>
+</div>

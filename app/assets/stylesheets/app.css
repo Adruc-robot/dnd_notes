@@ -31,3 +31,22 @@ trix-toolbar .trix-button {
 body {
     background-color: #ebebeb;
 }
+.container {  display: grid;
+    grid-template-columns: 0.3fr 1.7fr;
+    grid-template-rows: 0.2fr 1.8fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "links utility"
+      "links notes";
+  }
+  
+.links { grid-area: links; }
+  
+.notes { grid-area: notes; }
+  
+.utility { grid-area: utility; }
+
+.trix-content {
+    color: #8a8a8a;
+}
