@@ -41,12 +41,59 @@ body {
       "links notes";
   }
   
-.links { grid-area: links; }
+.links { 
+    grid-area: links; 
+    display: flex;
+    justify-content: center;
+}
   
 .notes { grid-area: notes; }
-  
+.notes ul {
+    margin: 0rem;
+}  
 .utility { grid-area: utility; }
 
 .trix-content {
     color: #8a8a8a;
+}
+
+.trix-override .trix-content {
+    color:black;
+    background: none;
+}
+
+.link-item {
+    border-radius: .2rem;
+    background: #d2cfcf;
+    margin: 0.5rem;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+.link-item a, .note-item h4, .note-item a {
+    padding: 0 .25rem 0 .25rem;
+}
+.utility-list {
+    border-radius: .2rem;
+    background: #d2cfcf;
+    margin: 0.5rem;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+.utility-list li, .utility-list h2 {
+    margin: .5rem;
+}
+.note-item {
+    border-radius: .2rem;
+    background: #d2cfcf;
+    margin: 0.5rem;
+    list-style-type: none;
+}
+.note-item .trix-content {
+    background: #d2cfcf;
+    color: black;
+    padding: .25rem 1rem .25rem 1rem
 }

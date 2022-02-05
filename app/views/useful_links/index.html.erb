@@ -1,11 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Useful links</h1>
-<%= link_to "New useful link", new_useful_link_path %>
-<div id="useful_links" class="genFlex">
+<h1>Links</h1>
+
+<div id="links">
   <% @useful_links.each do |useful_link| %>
-    <%= render useful_link %>
+    <div><%= useful_link.name%>
+      <div>URL: <%= useful_link.url%></div>
+    </div>
+    <div>
+      <%= link_to "(Edit", edit_campaign_useful_link_path(@campaign, useful_link) %>|<%= link_to "Delete)", [@campaign, useful_link], data: {turbo_method: :delete, turbo_confirm: "Delete link?"} %>
+    </div>
   <% end %>
+  <%= link_to "Back to Campaign", campaign_path(@campaign) %>
 </div>
-
-

@@ -1,44 +1,72 @@
 <% content_for :head do %>
   <%= javascript_import_module_tag "rich_text" %>
 <% end %>
-<div class="translucent-form-overlay">
-  <%= form_with(model: note) do |form| %>
-    <% if note.errors.any? %>
+<!--<div class="translucent-form-overlay">
+  <%#= form_with(model: note) do |form| %>
+    <%# if note.errors.any? %>
       <div style="color: red">
-        <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
+        <h2><%#= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
 
         <ul>
-          <% note.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
+          <%# note.errors.each do |error| %>
+            <li><%#= error.full_message %></li>
+          <%# end %>
         </ul>
       </div>
-    <% end %>
-    <h3>create/edit</h3>
+    <%# end %>
+    <h3>Note create/update</h3>
     <div>
-      <%= form.number_field :user_id, id: :note_user_id, value: current_user.id, type: :hidden %>
+      <%#= form.number_field :user_id, id: :note_user_id, value: current_user.id, type: :hidden %>
     </div>
 
     <div class="row columns">
-      <%= form.label :name, style: "display: block" do %>
-        <%= form.text_field :name, placeholder: "Note title" %>
-      <% end %>
+      <%#= form.label :note_heading, style: "display: block" do %>
+        <%#= form.text_field :note_heading, placeholder: "Note title" %>
+      <%# end %>
     </div>
 
     <div class="row columns">
-      <%= form.label :campaign_id, style: "display: block" do %>
-        <%= form.select :campaign_id, current_user.campaigns.map { |c| [c.name, c.id] }%>
-      <% end %>
+      <%#= form.label :campaign_id, style: "display: block" do %>
+        <%#= form.select :campaign_id, current_user.campaigns.map { |c| [c.name, c.id] }%>
+      <%# end %>
     </div>
 
     <div class="row columns">
-      <%= form.label :content do %>
-        <%= form.rich_text_area :content %>
-      <% end %>
+      <%#= form.label :content do %>
+        <%#= form.rich_text_area :content %>
+      <%# end %>
     </div>
 
     <div>
-      <%= form.submit class:"base-submit-button primary button expanded search-button" %>
+      <%#= form.submit class:"primary button expanded search-button" %>
+    </div>
+  <%# end %>
+</div>-->
+
+<%#= form_with(model: note) do |form| %>
+<%= form_with(model: [@campaign, note]) do |form| %>
+  <% if note.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
+
+      <ul>
+        <% note.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
-</div>
+  <%= form.number_field :user_id, id: :note_user_id, value: current_user.id, type: :hidden %>
+  <div>
+    <%= form.label :note_heading, style: "display: block" %>
+    <%= form.text_field :note_heading, placeholder: "Note title" %>
+  </div>
+  <div>
+    <%= form.label :content %>
+    <%= form.rich_text_area :content %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

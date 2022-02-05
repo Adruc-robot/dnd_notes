@@ -1,40 +1,68 @@
-<div class="translucent-form-overlay">
-  <%= form_with(model: useful_link) do |form| %>
-    <% if useful_link.errors.any? %>
+<!--<div class="translucent-form-overlay">
+  <%#= form_with(model: useful_link) do |form| %>
+    <%# if useful_link.errors.any? %>
       <div style="color: red">
-        <h2><%= pluralize(useful_link.errors.count, "error") %> prohibited this useful_link from being saved:</h2>
+        <h2><%#= pluralize(useful_link.errors.count, "error") %> prohibited this useful_link from being saved:</h2>
 
         <ul>
-          <% useful_link.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
+          <%# useful_link.errors.each do |error| %>
+            <li><%#= error.full_message %></li>
+          <%# end %>
         </ul>
       </div>
-    <% end %>
+    <%# end %>
     <div>
-      <%= form.number_field :user_id, id: :note_user_id, value: current_user.id, type: :hidden %>
+      <%#= form.number_field :user_id, id: :note_user_id, value: current_user.id, type: :hidden %>
     </div>
 
     <div class="row columns">
-      <%= form.label :campaign_id, style: "display: block" do %>
-        <%= form.select :campaign_id, current_user.campaigns.map { |c| [c.name, c.id] }%>
-      <% end %>
+      <%#= form.label :campaign_id, style: "display: block" do %>
+        <%#= form.select :campaign_id, current_user.campaigns.map { |c| [c.name, c.id] }%>
+      <%# end %>
     </div>
 
     <div class="row columns">
-      <%= form.label :name, style: "display: block" do %>
-        <%= form.text_field :name, placeholder:"link name" %>
-      <% end %>
+      <%#= form.label :name, style: "display: block" do %>
+        <%#= form.text_field :name, placeholder:"link name" %>
+      <%# end %>
     </div>
 
     <div class="row columns">
-      <%= form.label :url, style: "display: block" do %>
-        <%= form.text_field :url, placeholder: "input full link" %>
-      <% end %>
+      <%#= form.label :url, style: "display: block" do %>
+        <%#= form.text_field :url, placeholder: "input full link" %>
+      <%# end %>
     </div>
 
     <div>
-      <%= form.submit class:"base-submit-button primary button expanded search-button" %>
+      <%#= form.submit class:"base-submit-button primary button expanded search-button" %>
+    </div>
+  <%# end %>
+</div>-->
+
+<%= form_with(model: [@campaign, useful_link]) do |form| %>
+  <% if useful_link.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(useful_link.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% useful_link.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
-</div>
+  <%= form.number_field :user_id, id: :useful_link_user_id, value: current_user.id, type: :hidden %>
+  <div>
+    <%= form.label "link name", style: "display: block" %>
+    <%= form.text_area :name %>
+  </div>
+
+<div>
+    <%= form.label :url, style: "display: block" %>
+    <%= form.text_area :url %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

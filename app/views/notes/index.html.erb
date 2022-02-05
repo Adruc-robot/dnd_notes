@@ -1,11 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Notes</h1>
-<%= link_to "New note", new_note_path %>
-<div id="notes" class="genFlex">
+
+<div id="notes">
   <% @notes.each do |note| %>
-    <%= render note %>
+    <div><%= note.note_heading %>
+      <div class="trix-override"><%= note.content %>
+    </div>
+    <div>
+      <%= link_to "(Edit", edit_campaign_note_path(@campaign, note)%>|<%= link_to "Delete)", [@campaign, note], data: {turbo_method: :delete, turbo_confirm: "Delete note?"} %>
+    </div>
   <% end %>
+  <%= link_to "Back to Campaign", campaign_path(@campaign) %>
 </div>
-
-

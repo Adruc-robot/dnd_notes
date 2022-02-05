@@ -1,10 +1,21 @@
-<div id="<%= dom_id note %>" class="blockquote-container">
+<!--<div id="<%#= dom_id note %>" class="blockquote-container">
   <div class="callout">
-    <!--<h4 class="blockquote-title"><%#= link_to note.campaign.name, note_path  %></h4>-->
-    <h4 class="blockquote-title"><%= note.campaign.name %>
+    <h4 class="blockquote-title"><%#= note.campaign_id %></h4>
     <blockquote>
-      <p class="blockquote-content"><%= note.content %></p>
+      <p class="blockquote-content"><%#= note.content %></p>
     </blockquote>
   </div>
+<%#= button_to "delete", note, method: :delete %>
+</div>-->
 
+<div id="<%= dom_id note %>">
+  <p>
+    <strong>Heading:</strong>
+    <%= note.note_heading %>
+  </p>
+
+  <p>
+    <strong>Note:</strong>
+    <div class="trix-override"><%= note.content%></div>
+  </p>
 </div>

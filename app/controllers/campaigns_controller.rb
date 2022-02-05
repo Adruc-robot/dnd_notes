@@ -10,7 +10,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/1 or /campaigns/1.json
   def show
-    @campaign = Campaign.find(params[:id])
+    #@campaign = Campaign.find(params[:id])
   end
 
   # GET /campaigns/new
@@ -21,6 +21,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/1/edit
   def edit
+    #@campaign = Campaign.find(params[:id])
   end
 
   # POST /campaigns or /campaigns.json
@@ -31,6 +32,7 @@ class CampaignsController < ApplicationController
     respond_to do |format|
       if @campaign.save
         format.html { redirect_to campaign_url(@campaign), notice: "Campaign was successfully created." }
+        #format.html { redirect_to @campaign, notice: "Campaign was successfully created." }
         format.json { render :show, status: :created, location: @campaign }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,8 +44,11 @@ class CampaignsController < ApplicationController
   # PATCH/PUT /campaigns/1 or /campaigns/1.json
   def update
     respond_to do |format|
+      #@campaign = Campaign.find(params[:id])
+
       if @campaign.update(campaign_params)
         format.html { redirect_to campaign_url(@campaign), notice: "Campaign was successfully updated." }
+        #format.html { redirect_to @campaign, notice: "Campaign was successfully updated." }
         format.json { render :show, status: :ok, location: @campaign }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,22 +59,26 @@ class CampaignsController < ApplicationController
 
   # DELETE /campaigns/1 or /campaigns/1.json
   def destroy
+    #@campaign = Campaign.find(params[:id])
     @campaign.destroy
 
     respond_to do |format|
-      format.html { redirect_to campaigns_url, notice: "Campaign was successfully destroyed." }
+      #format.html { redirect_to campaigns_url, notice: "Campaign was successfully destroyed." }
+      format.html { redirect_to "root_path", notice: "Campaign was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
-  def correct_user  
-    @campaign = current_user.campaigns.find_by(id: params[:id])
-    redirect_to campaigns_path, notice: "Not authorized!" if @campaign.nil?
-  end
+  
 
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    
+    def correct_user  
+      @campaign = current_user.campaigns.find_by(id: params[:id])
+      redirect_to campaigns_path, notice: "Not authorized!" if @campaign.nil?
+    end
+
     def set_campaign
       @campaign = Campaign.find(params[:id])
     end

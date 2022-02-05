@@ -1,18 +1,20 @@
-<div class="container">
-  <div class="links"></div>
-  <div class="notes"></div>
-  <div class="utility">
     <% if user_signed_in? %>
-      <%= select_tag(:campaign_id, options_for_select(current_user.campaigns.map { |c| [c.name,c.id] } ) )%>
-    
-    <!---testing-->
-      <ul>
-        <% @campaigns.each do |campaign| %>
-          <li>
-            <%= link_to campaign.name, campaign %>
-          </li>
+        <% if @campaigns.each do |campaign| %>
+          <div id="<%= dom_id campaign %>" class="blockquote-container">
+            <div class="callout">
+              <h4 class="blockquote-title"><%= link_to campaign.name, campaign %></h4>
+            </div>
+          </div>
+        <% end.empty? %>
+          <p>You have no campaigns created.</p>
+          <%= link_to "Create one!", new_campaign_path %>
         <% end %>
-      </ul>
+
+
+    <% else %>
+      <h2>DND Helpy McHelperton tool</h2>
+      <p>This here thingy allows you to put in notes and links associated with a campaign. I used to use OneNote for this, but I don't want to use dumb microsoft cloud thingy, so those notes were trapped on a computer... Look, it just became a pain.</p>
+      <p>I'm hoping this allow me to better organize stuff. And I'd like to expand it to include the ability to add non-campaign owners to the mix so they can both make personal notes as well as see DM notes, etc. We'll see.</p>
+      <p>To use this, you have to sign up. You do not even need to use a real email, but you'll need to remember the fake email address you provide to get back to your data.</p>
+      <p>I hope you enjoy</p>
     <% end %>
-  </div>
-</div>
