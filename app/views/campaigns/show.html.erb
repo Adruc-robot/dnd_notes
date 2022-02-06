@@ -30,6 +30,7 @@
       <li><%= link_to "Delete campaign", @campaign, data: {turbo_method: :delete, turbo_confirm: "For realsies?"} %></li>
       <li><%= link_to "Notes", campaign_notes_path(@campaign) %></li>
       <li><%= link_to "Links", campaign_useful_links_path(@campaign) %></li>
+      <li><%= link_to "Campaign members", campaign_campaign_members_path(@campaign) %></li>
     <ul>
   </div>
 </div>

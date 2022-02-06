@@ -58,6 +58,14 @@
   <% end %>
   <%= form.number_field :user_id, id: :note_user_id, value: current_user.id, type: :hidden %>
   <div>
+    <%= form.label :audience, style: "display: block" %>
+    <%= form.select :audience, [ ["All Members","AM"],["Selected Members","SM"],["Private","PR"]]  %>
+  </div>
+  <div>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.select :category, [ ["Session","SE"],["NPC","NPC"],["House Rule","HR"],["Plot","PL"] ]%>
+  </div>
+  <div>
     <%= form.label :note_heading, style: "display: block" %>
     <%= form.text_field :note_heading, placeholder: "Note title" %>
   </div>

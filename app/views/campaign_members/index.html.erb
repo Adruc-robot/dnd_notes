@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<h1><%= @campaign.name %> members</h1>
+
+<div id="campaign_members">
+  <ul class="campaign-members-list">
+    <% if @campaign_members.each do |campaign_member| %>
+      <li>
+        <%#= User.find_by(id: campaign_member.user_id).email + "(" + User.find_by(id: campaign_member.user_id).user_name + ")" %>
+        <%= campaign_member.user.email + "(" + campaign_member.user.user_name + ")" %>
+        <p>
+          <%#= link_to "Show this campaign member", campaign_member %>
+          <%= link_to "(Edit", edit_campaign_campaign_member_path(@campaign, campaign_member)%>|<%= link_to "Delete)", [@campaign, campaign_member], data: {turbo_method: :delete, turbo_confirm: "Delete member?"} %>
+        </p>
+      </li>
+    <% end.empty? %>  
+      <li>No members added</li>
+    <% end %>
+    
+  
+</div>
+
+<%= link_to "New campaign member", new_campaign_campaign_member_path(@campaign) %>

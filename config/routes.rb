@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :campaign_members
   root to: "home#index"
   get 'home/index'
   #devise_for :users
@@ -6,8 +7,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
   #resources :useful_links
   resources :campaigns do
-      resources :notes
-    resources :useful_links
+      resources :notes, :useful_links, :campaign_members
   end
   #resources :notes
   
