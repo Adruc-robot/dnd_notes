@@ -11,6 +11,10 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1 or /campaigns/1.json
   def show
     #@campaign = Campaign.find(params[:id])
+    @testVal = @campaign.notes.distinct.select("category")
+    #@testVal.each do |t|
+      #@try = @try + t.category + "|"
+    #end
   end
 
   # GET /campaigns/new
