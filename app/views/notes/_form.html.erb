@@ -59,11 +59,11 @@
   <%= form.number_field :user_id, id: :note_user_id, value: current_user.id, type: :hidden %>
   <div>
     <%= form.label :audience, style: "display: block" %>
-    <%= form.select :audience, [ ["All Members","AM"],["Selected Members","SM"],["Private","PR"]]  %>
+    <%= form.select :audience, [ ["All Members"],["Selected Members"],["Private"]]  %>
   </div>
   <div>
     <%= form.label :category, style: "display: block" %>
-    <%= form.select :category, [ ["Session","SE"],["NPC","NPC"],["House Rule","HR"],["Plot","PL"] ]%>
+    <%= form.select :category, [ ["Session"],["NPC"],["House Rule"],["Plot"] ]%>
   </div>
   <div>
     <%= form.label :note_heading, style: "display: block" %>

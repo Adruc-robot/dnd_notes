@@ -4,7 +4,14 @@
 
 <div id="notes">
   <% @notes.each do |note| %>
-    <div><%= note.note_heading %>
+    <div>
+      <span><%= note.note_heading%></span>
+      <% if note.category%>
+        <span><%=note.category%></span>
+      <% end %>
+      <% if note.audience %>
+        <span><%= note.audience%></span>
+      <% end %>
       <div class="trix-override"><%= note.content %>
     </div>
     <div>

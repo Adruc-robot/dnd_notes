@@ -15,9 +15,10 @@
     <ul>
       <li class="note-item"><%= link_to "add a note", new_campaign_note_path(@campaign) %></li>
       <% if @campaign.notes.each do |note| %>
-        <li class="note-item">
-          <h4><%= note.note_heading %></h4>
-          <%= note.content %>
+        <li class="note-item" data-category="<%=note.category%>">
+            <h4><%= note.note_heading %></h4>
+            <div><%= note.category%><%= note.audience%></div>
+            <%= note.content %>
         </li>
       <% end.empty? %>
         <li class="note-item">No notes</li>
