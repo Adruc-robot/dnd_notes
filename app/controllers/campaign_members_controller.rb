@@ -18,7 +18,8 @@ class CampaignMembersController < ApplicationController
     #@campaign_member = CampaignMember.new
     #@userList = users.select("users.email,users.id").joins("left join campaign_members on users.id=campaign_members.user_id").where("campaign_members.user_id is null")
     #@userList = Users.all.joins("left join campaign_members on Users.id=campaign_members.user_id").where("campaign_members.user_id is null").select("Users.email,Users.id")
-    @userList = User.left_outer_joins(:campaign_members).select("users.email,users.id").where("campaign_members.user_id is null").select("Users.email,Users.id")
+    #@userList = User.left_outer_joins(:campaign_members).select("distinct users.email,users.id").where("campaign_members.user_id is null")
+    @userList = User.left_outer_joins(:campaign_members).select("distinct users.email,users.id").where("campaign_members.campaign_id is null or campaign_members.campaign_id<>?",@campaign.id)
     @campaign_member = @campaign.campaign_members.build
   end
 
