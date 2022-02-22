@@ -1,0 +1,46 @@
+.noShow {
+    display: none;
+}
+.overlay {
+    position: fixed; /* Positioning and size */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(128,128,128,0.5);
+}
+.z-modal-header {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+.z-modal {
+    position: fixed;
+    z-index: 100;
+    left: 25%;
+    top: 25%;
+    transform: translate(-25%, -25%);
+    background: white;
+    box-shadow: 0 0 60px 10px rgb(0 0 0 /90%);
+    padding: 1rem;
+}
+.z-modal-close-button {
+    color: #000;
+    font-size: 28px;
+    font-weight: bold;
+    background-color: lightgray;
+    padding: 0px 2px 0px 2px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.z-modal-close-button:hover,
+.z-modal-close-button:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: darkgray;
+}

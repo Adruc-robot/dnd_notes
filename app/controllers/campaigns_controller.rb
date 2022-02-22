@@ -5,16 +5,17 @@ class CampaignsController < ApplicationController
   # GET /campaigns or /campaigns.json
   def index
     #@campaigns = Campaign.all
-    @campaigns = current_user.campaigns.all.order(name: :asc)
+    #@campaigns = current_user.campaigns.all.order(name: :asc)
+    @campaigns = Campaign.left_outer_joins(:campaign_members).where("campaigns.user_id=? or campaign_members.user_id=?",current_user.id,current_user.id)
   end
 
   # GET /campaigns/1 or /campaigns/1.json
   def show
-    #@campaign = Campaign.find(params[:id])
     @testVal = @campaign.notes.distinct.select("category")
-    #@testVal.each do |t|
-      #@try = @try + t.category + "|"
-    #end
+    @notes = Note.joins(:campaign).where("campaigns.id=? and (notes.user_id=? or notes.audience =?)",@campaign.id,current_user.id,"All Members").select("notes.*").order("notes.created_at DESC")
+    #@links = current_user.useful_links.joins(:campaign).order("useful_links.name")
+    #@links = UsefulLink.campaign.current_user.order("useful_links.name")
+    @links = UsefulLink.joins(:campaign).where("campaigns.id=? and useful_links.user_id=?",@campaign.id,current_user.id)
   end
 
   # GET /campaigns/new
@@ -79,8 +80,9 @@ class CampaignsController < ApplicationController
   private
     
     def correct_user  
-      @campaign = current_user.campaigns.find_by(id: params[:id])
-      redirect_to campaigns_path, notice: "Not authorized!" if @campaign.nil?
+      @campaignCheck = current_user.campaigns.find_by(id: params[:id])
+      #redirect_to campaigns_path, notice: "Not authorized!" if @campaignCheck.nil?
+      redirect_to campaign_url(@campaign), notice: "Not authorized!" if @campaignCheck.nil?
     end
 
     def set_campaign

@@ -12,8 +12,9 @@
       <% if note.audience %>
         <span><%= note.audience%></span>
       <% end %>
-      <div class="trix-override"><%= note.content %>
-    </div>
+      <div class="trix-override">
+        <%= note.content %>
+      </div>
     <div>
       <%= link_to "(Edit", edit_campaign_note_path(@campaign, note)%>|<%= link_to "Delete)", [@campaign, note], data: {turbo_method: :delete, turbo_confirm: "Delete note?"} %>
     </div>

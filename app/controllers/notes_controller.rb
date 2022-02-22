@@ -34,6 +34,9 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.prepend("campaign-notes-list", partial: "notes/note", locals: {note: @note})
+        end
         #format.html { redirect_to note_url(@note), notice: "Note was successfully created." }
         format.html { redirect_to campaign_path(@campaign), notice: "Note was successfully created." }
         format.json { render :show, status: :created, location: @note }
@@ -48,6 +51,9 @@ class NotesController < ApplicationController
   def update
     respond_to do |format|
       if @note.update(note_params)
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.prepend("campaign-notes-list", partial: "notes/note", locals: {note: @note})
+        end
         #format.html { redirect_to note_url(@note), notice: "Note was successfully updated." }
         format.html { redirect_to campaign_path(@campaign), notice: "Note was successfully updated." }
         format.json { render :show, status: :ok, location: @note }

@@ -2,15 +2,19 @@
         <% if @campaigns.each do |campaign| %>
           <div id="<%= dom_id campaign %>" class="blockquote-container">
             <div class="callout">
-              <h4 class="blockquote-title"><%= link_to campaign.name, campaign %></h4>
+              <h4 class="blockquote-title"><%= link_to campaign.name, campaign %>
+                <% if campaign.user_id == current_user.id %>
+                   (owner)
+                <% else %>
+                   (member)
+                <% end %>
+              </h4>
             </div>
           </div>
         <% end.empty? %>
           <p>You have no campaigns created.</p>
           <%= link_to "Create one!", new_campaign_path %>
         <% end %>
-
-
     <% else %>
       <h2>DND Helpy McHelperton tool</h2>
       <p>This here thingy allows you to put in notes and links associated with a campaign. I used to use OneNote for this, but I don't want to use dumb microsoft cloud thingy, so those notes were trapped on a computer... Look, it just became a pain.</p>
