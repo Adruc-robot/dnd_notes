@@ -77,7 +77,7 @@ class CampaignMembersController < ApplicationController
     end
     def correct_user  
       #only the owner of the campaign can update the campaign members - this check should be based on the campaign itself
-      @campaignCheck = current_user.campaigns.find_by(id: params[:id])
+      @campaignCheck = current_user.campaigns.find_by(id: @campaign.id)
       #send back to the campaign
       #redirect_to campaign_campaign_members_path, notice: "Not authorized!" if @campaignCheck.nil?
       redirect_to campaign_url(@campaign), notice: "Not authorized!" if @campaignCheck.nil?
