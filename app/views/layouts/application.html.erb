@@ -22,6 +22,11 @@
   <%= render "home/menubar" %>
     <p class="alert"><%= alert %></p>
     <div class="mainCont">
+      <div class="overlay noShow" id="z-modal-overlay">
+        <div class="z-modal">
+          <%= turbo_frame_tag :modalForm %>
+        </div>
+      </div>
       <%= yield %>
     <div>
   </body>

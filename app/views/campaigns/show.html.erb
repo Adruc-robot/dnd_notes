@@ -1,11 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
 <div class="container">
-<%= @testVal.category%>
+<%#= @testVal.category%>
   <div class="links">
     <ul>
       <li class="link-item"><%= link_to "add a link", new_campaign_useful_link_path(@campaign) %></li>
-      <% if @campaign.useful_links.each do |link|%>
+      <%# if @campaign.useful_links.each do |link|%>
+      <% if @links.each do |link| %>
         <li class="link-item"><a href="<%= link.url %>" target="_blank"><%= link.name %></a></li>
       <% end.empty? %>
         <li class="link-item">No links</li>
@@ -13,14 +14,12 @@
     <ul>
   </div>
   <div class="notes">
-    <ul>
-      <li class="note-item"><%= link_to "add a note", new_campaign_note_path(@campaign) %></li>
-      <% if @campaign.notes.each do |note| %>
-        <li class="note-item" data-category="<%=note.category%>">
-            <h4><%= note.note_heading %></h4>
-            <div><%= note.category%><%= note.audience%></div>
-            <%= note.content %>
-        </li>
+    <ul id="add-note-list">
+      <li class="note-item"><%= link_to "add a note", new_campaign_note_path(@campaign), data:{turbo_frame: "modalForm", controller: "turbomodal", action: "turbomodal#showModal"} %></li>
+    </ul>
+    <ul id="campaign-notes-list">
+      <% if @notes.each do |note| %>
+        <%= render note %>
       <% end.empty? %>
         <li class="note-item">No notes</li>
       <% end %>
