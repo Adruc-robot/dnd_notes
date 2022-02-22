@@ -7,7 +7,9 @@ class CampaignMembersController < ApplicationController
   # GET /campaign_members or /campaign_members.json
   def index
     #@campaign_members = @campaign.campaign_members.where("campaigns.user_id=?",current_user.id)
-    @campaign_members = @campaign.campaign_members.where("campaign_members.user_id=?",current_user.id)
+    #@campaign_members = @campaign.campaign_members.where("campaign_members.user_id=?",current_user.id)
+    #@campaign_members = @campaign.campaign_members.where()
+    @campaign_members = @campaign.campaign_members
   end
 
   # GET /campaign_members/1 or /campaign_members/1.json
