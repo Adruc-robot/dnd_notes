@@ -6,7 +6,7 @@ class CampaignsController < ApplicationController
   def index
     #@campaigns = Campaign.all
     #@campaigns = current_user.campaigns.all.order(name: :asc)
-    @campaigns = Campaign.left_outer_joins(:campaign_members).where("campaigns.user_id=? or campaign_members.user_id=?",current_user.id,current_user.id)
+    @campaigns = Campaign.left_outer_joins(:campaign_members).where("campaigns.user_id=? or campaign_members.user_id=?",current_user.id,current_user.id).select("distinct campaigns.*")
   end
 
   # GET /campaigns/1 or /campaigns/1.json

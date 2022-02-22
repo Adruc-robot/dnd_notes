@@ -4,7 +4,8 @@ class UsefulLinksController < ApplicationController
 
   # GET /useful_links or /useful_links.json
   def index
-    @useful_links = @campaign.useful_links
+    #@useful_links = @campaign.useful_links
+    @useful_links = current_user.useful_links.where("useful_links.campaign_id=?",@campaign.id)
   end
 
   # GET /useful_links/1 or /useful_links/1.json
@@ -27,6 +28,9 @@ class UsefulLinksController < ApplicationController
 
     respond_to do |format|
       if @useful_link.save
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.prepend("campaign-links-list", partial: "useful_links/useful_link", locals: {useful_link: @useful_link})
+        end
         #format.html { redirect_to useful_link_url(@useful_link), notice: "Useful link was successfully created." }
         #format.html { redirect_to campaign_useful_links_path(@campaign), notice: "Useful link was successfully created." }
         format.html { redirect_to campaign_path(@campaign), notice: "Useful link was successfully created." }
@@ -42,6 +46,9 @@ class UsefulLinksController < ApplicationController
   def update
     respond_to do |format|
       if @useful_link.update(useful_link_params)
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.prepend("campaign-links-list", partial: "useful_links/useful_link", locals: {useful_link: @useful_link})
+        end
         #format.html { redirect_to useful_link_url(@useful_link), notice: "Useful link was successfully updated." }
         format.html { redirect_to campaign_path(@campaign), notice: "Useful link was successfully updated." }
         format.json { render :show, status: :ok, location: @useful_link }
@@ -78,3 +85,4 @@ class UsefulLinksController < ApplicationController
       params.require(:useful_link).permit(:user_id, :campaign_id, :name, :url)
     end
 end
+

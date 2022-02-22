@@ -45,11 +45,12 @@ body {
 .links { 
     grid-area: links; 
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
 }
   
 .notes { grid-area: notes; }
-.notes ul {
+.notes ul, .links ul {
     margin: 0rem;
 }  
 .utility { grid-area: utility; }

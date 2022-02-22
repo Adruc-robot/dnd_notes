@@ -38,31 +38,32 @@
     </div>
   <%# end %>
 </div>-->
+<div class="z-modal-form">
+  <%= form_with(model: [@campaign, useful_link]) do |form| %>
+    <% if useful_link.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(useful_link.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-<%= form_with(model: [@campaign, useful_link]) do |form| %>
-  <% if useful_link.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(useful_link.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <ul>
+          <% useful_link.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= form.number_field :user_id, id: :useful_link_user_id, value: current_user.id, type: :hidden %>
+    <div>
+      <%= form.label "link name", style: "display: block" %>
+      <%= form.text_area :name %>
+    </div>
 
-      <ul>
-        <% useful_link.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <div>
+      <%= form.label :url, style: "display: block" %>
+      <%= form.text_area :url %>
+    </div>
+
+    <div>
+      <%= form.submit %>
     </div>
   <% end %>
-  <%= form.number_field :user_id, id: :useful_link_user_id, value: current_user.id, type: :hidden %>
-  <div>
-    <%= form.label "link name", style: "display: block" %>
-    <%= form.text_area :name %>
-  </div>
-
-<div>
-    <%= form.label :url, style: "display: block" %>
-    <%= form.text_area :url %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

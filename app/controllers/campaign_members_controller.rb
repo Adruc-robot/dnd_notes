@@ -2,11 +2,12 @@ class CampaignMembersController < ApplicationController
   before_action :get_campaign
   before_action :set_campaign_member, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy, :create]
 
   # GET /campaign_members or /campaign_members.json
   def index
-    @campaign_members = @campaign.campaign_members
+    #@campaign_members = @campaign.campaign_members.where("campaigns.user_id=?",current_user.id)
+    @campaign_members = @campaign.campaign_members.where("campaign_members.user_id=?",current_user.id)
   end
 
   # GET /campaign_members/1 or /campaign_members/1.json
@@ -74,9 +75,12 @@ class CampaignMembersController < ApplicationController
     def get_campaign
       @campaign = Campaign.find(params[:campaign_id])
     end
-    #the check is based on the owner of the campaign.
     def correct_user  
-      redirect_to campaign_campaign_members_path, notice: "Not authorized!" if @campaign.nil?
+      #only the owner of the campaign can update the campaign members - this check should be based on the campaign itself
+      @campaignCheck = current_user.campaigns.find_by(id: params[:id])
+      #send back to the campaign
+      #redirect_to campaign_campaign_members_path, notice: "Not authorized!" if @campaignCheck.nil?
+      redirect_to campaign_url(@campaign), notice: "Not authorized!" if @campaignCheck.nil?
     end
 
 

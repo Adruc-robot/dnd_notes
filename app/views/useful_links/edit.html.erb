@@ -1,9 +1,11 @@
-<h1>Editing useful link</h1>
-
-<%= render "form", useful_link: @useful_link %>
-
-<br>
-
-<div>
-  <%= link_to "Back to campaign", campaign_path(@campaign) %>
-</div>
+<%= turbo_frame_tag :modalForm do %>
+  <div data-controller="turbomodal" data-action="turbo:submit-end->turbomodal#submitEnd" id="theModal">
+    <div class="z-modal-header">
+      <div class="z-modal-left-side-item">
+        <h1>Editing useful link</h1>
+            </div>
+      <div class="z-modal-close-button right-side-item" data-controller="turbomodal" data-action="click->turbomodal#modalClose">&times;</div>
+    </div>
+    <%= render "form", useful_link: @useful_link %>
+  </div>
+<% end %>

@@ -1,9 +1,7 @@
-<!--<div id="<%#= dom_id useful_link %>" class="blockquote-container">
-  <div class="callout">
-    <h4 class="blockquote-title"><%#= link_to useful_link.id, useful_link  %></h4>
-    <a href="<%#= useful_link.url%>" target="_blank"><%#= useful_link.name %></a>
-  </div>
+
+<!--<div id="<%#= dom_id useful_link %>">
+  <a href="<%#= useful_link.url %>" target="_blank"><%#= useful_link.name %></a>
 </div>-->
-<div id="<%= dom_id useful_link %>">
+<li class="link-item" id="<%= dom_id useful_link %>">
   <a href="<%= useful_link.url %>" target="_blank"><%= useful_link.name %></a>
-</div>
+</li>
